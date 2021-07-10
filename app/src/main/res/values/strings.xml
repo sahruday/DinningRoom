@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">DinningRoom</string>
+    <string name="ingredients">Ingredients</string>
+    <string name="atTime">at %1$s</string>
+    <string name="itemCount">%1$s item(S)</string>
+
 </resources>
