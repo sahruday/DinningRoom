@@ -11,7 +11,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/orderItemWidth"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/size_small"
         app:cardCornerRadius="10dp">
@@ -84,21 +84,10 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/createdTime" />
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/itemsCycle"
-                    android:layout_width="match_parent"
-                    android:layout_height="0dp"
-                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/button"
-                    tools:itemCount="10"
-                    tools:listitem="@layout/ordered_items_item" />
-
                 <TextView
                     android:id="@+id/itemCount"
                     items="@{order.items.size()}"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/roboto_slab"
                     android:gravity="top|start"
@@ -107,12 +96,23 @@
                     app:layout_constraintTop_toBottomOf="@id/createdTime"
                     tools:text="3 items" />
 
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/itemsCycle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/button"
+                    tools:itemCount="5"
+                    tools:listitem="@layout/ordered_items_item" />
+
+
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <View
                 android:id="@+id/indicator"
                 android:layout_width="4dp"
-                android:layout_height="0dp"
                 android:background="@drawable/indicator_bg"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"

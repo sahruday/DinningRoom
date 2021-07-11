@@ -9,4 +9,5 @@
     <dimen name="font_medium">16sp</dimen>
     <dimen name="font_large_x">20sp</dimen>
     <dimen name="font_extra_large">29sp</dimen>
+    <dimen name="orderItemWidth">300dp</dimen>
 </resources>

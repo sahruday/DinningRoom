@@ -5,17 +5,17 @@ sealed class Callback {
     data class Error(val error: String?) : Callback()
 }
 
-class MyResult<out T> constructor(
+class AppResult<out T> constructor(
     private val value: Any?
 ) {
     val isSuccess: Boolean get() = value !is Throwable
 
     companion object {
-        fun <T> failure(exception: Throwable): MyResult<T> =
-            MyResult(exception)
+        fun <T> failure(exception: Throwable): AppResult<T> =
+            AppResult(exception)
 
-        fun <T> success(value: T): MyResult<T> =
-            MyResult(value)
+        fun <T> success(value: T): AppResult<T> =
+            AppResult(value)
     }
 
     suspend fun handle(onSuccess: suspend (T) -> Unit = {}, onFailure: suspend (Throwable) -> Unit = {}) {

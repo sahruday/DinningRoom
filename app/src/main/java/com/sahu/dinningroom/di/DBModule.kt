@@ -1,9 +1,8 @@
 package com.sahu.dinningroom.di
 
 import android.content.Context
-import androidx.room.Room
 import com.sahu.dinningroom.appUtil.AppDatabase
-import com.sahu.dinningroom.appUtil.DB_NAME
+import com.sahu.dinningroom.data.cache.dao.MenuDao
 import com.sahu.dinningroom.data.cache.dao.OrdersDao
 import dagger.Module
 import dagger.Provides
@@ -18,10 +17,13 @@ object DBModule {
 
     @Singleton
     @Provides
-    fun getDB(@ApplicationContext context: Context): AppDatabase = Room.databaseBuilder(context, AppDatabase::class.java, DB_NAME)
-        .build()
+    fun getDB(@ApplicationContext context: Context): AppDatabase = AppDatabase.getInstance(context)
 
     @Singleton
     @Provides
     fun getOrderDao(appDatabase: AppDatabase): OrdersDao = appDatabase.orderDao()
+
+    @Singleton
+    @Provides
+    fun getMenuDao(appDatabase: AppDatabase): MenuDao = appDatabase.menuDao()
 }

@@ -7,7 +7,11 @@
         android:tooltipText="@string/ingredients"
         android:title="@string/ingredients" />
 
-    <item android:id="@+id/others"
-        android:title=""
-        android:enabled="false"/>
+    <item android:id="@+id/placeOrder"
+        android:title="@string/place_order"
+        app:showAsAction="never"/>
+
+    <item android:id="@+id/clearOrders"
+        android:title="@string/clear_orders"
+        app:showAsAction="never"/>
 </menu>

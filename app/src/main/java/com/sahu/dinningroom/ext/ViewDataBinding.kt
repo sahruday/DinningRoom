@@ -27,14 +27,14 @@ fun AppCompatActivity.replaceFragment(
     transaction.commit()
 }
 
-fun AppCompatActivity.addFragment(
+fun Fragment.addFragment(
     @IdRes containerId: Int,
     fragment: Fragment,
     tag: String,
     sharedElements: List<Pair<View, String>> = emptyList(),
     addToStack: Boolean = true
 ) {
-    val transaction = supportFragmentManager.beginTransaction()
+    val transaction = parentFragmentManager.beginTransaction()
 
     if (sharedElements.isNotEmpty()) transaction.setReorderingAllowed(true)
 
@@ -42,9 +42,9 @@ fun AppCompatActivity.addFragment(
         transaction.addSharedElement(pair.first, pair.second)
     }
 
-    transaction.replace(containerId, fragment, tag)
+    transaction.add(containerId, fragment, tag)
 
-    if (addToStack) transaction.addToBackStack(null)
+    if (addToStack) transaction.addToBackStack(tag)
 
     transaction.commit()
 }

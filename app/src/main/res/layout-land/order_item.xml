@@ -11,7 +11,7 @@
     </data>
 
     <androidx.cardview.widget.CardView
-        android:layout_width="match_parent"
+        android:layout_width="@dimen/orderItemWidth"
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/size_small"
         app:cardCornerRadius="10dp">
@@ -87,12 +87,12 @@
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/itemsCycle"
                     android:layout_width="match_parent"
-                    android:layout_height="0dp"
+                    android:layout_height="wrap_content"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/button"
-                    tools:itemCount="10"
+                    tools:itemCount="5"
                     tools:listitem="@layout/ordered_items_item" />
 
                 <TextView

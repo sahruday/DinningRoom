@@ -18,7 +18,7 @@ object NetworkModule {
     @Provides
     fun provideService(): Api {
         return Retrofit.Builder()
-            .baseUrl("https://API.com/api/")
+            .baseUrl("https://Dinningroom.com/api/") //Dummy address
             .addConverterFactory(GsonConverterFactory.create(GsonBuilder().create()))
             .build()
             .create(Api::class.java)
