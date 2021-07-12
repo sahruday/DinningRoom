@@ -1,17 +1,20 @@
 package com.sahu.dinningroom.ui.orders
 
 import android.os.Bundle
-import android.view.*
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
 import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.PagerSnapHelper
-import com.sahu.dinningroom.ui.AppViewModel
 import com.sahu.dinningroom.R
 import com.sahu.dinningroom.appUtil.GroupToneGenerator
 import com.sahu.dinningroom.appUtil.ui.BaseFragment
 import com.sahu.dinningroom.databinding.OrdersFragmentBinding
 import com.sahu.dinningroom.ext.addFragment
+import com.sahu.dinningroom.ui.AppViewModel
 import com.sahu.dinningroom.ui.ingredient.IngredientsFragment
 import com.sahu.dinningroom.ui.orders.adapter.OrderAdapter
 import dagger.hilt.android.AndroidEntryPoint
@@ -28,7 +31,7 @@ class OrdersFragment
     private val viewModel: AppViewModel by activityViewModels()
     private lateinit var binding: OrdersFragmentBinding
 
-    private val ordersAdapter = OrderAdapter{ order, updateStatus ->
+    private val ordersAdapter = OrderAdapter { order, updateStatus ->
         viewModel.updateOrderState(order.id, updateStatus)
     }
 
@@ -36,12 +39,13 @@ class OrdersFragment
         this.binding = binding
         setHasOptionsMenu(true)
         binding.recycle.adapter = ordersAdapter
-        binding.recycle.layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
+        binding.recycle.layoutManager =
+            LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         PagerSnapHelper().attachToRecyclerView(binding.recycle)
 
         lifecycleScope.launchWhenResumed {
             viewModel.getOrders().collect {
-                binding.message.visibility = if(it.isNotEmpty()) View.GONE else View.VISIBLE
+                binding.message.visibility = if (it.isNotEmpty()) View.GONE else View.VISIBLE
                 GroupToneGenerator.clear()
                 ordersAdapter.submitList(it.sortedByDescending { order -> order.id })
             }
@@ -54,7 +58,7 @@ class OrdersFragment
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        when(item.itemId){
+        when (item.itemId) {
             R.id.showIngredients -> showIngredientsFragment()
             R.id.placeOrder -> viewModel.placeAnOrder()
             R.id.clearOrders -> viewModel.clearOrders()
@@ -62,10 +66,11 @@ class OrdersFragment
         return super.onOptionsItemSelected(item)
     }
 
-    private fun showIngredientsFragment(){
-        addFragment(R.id.container,
-        IngredientsFragment.newInstance(),
-        "IngredientFragment",
+    private fun showIngredientsFragment() {
+        addFragment(
+            R.id.container,
+            IngredientsFragment.newInstance(),
+            "IngredientFragment",
         )
     }
 

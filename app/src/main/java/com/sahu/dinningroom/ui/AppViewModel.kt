@@ -7,7 +7,6 @@ import com.sahu.dinningroom.data.Repository
 import com.sahu.dinningroom.dataHolders.MenuItem
 import com.sahu.dinningroom.dataHolders.Order
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -27,9 +26,11 @@ class AppViewModel @Inject constructor(
 
     fun placeAnOrder() = viewModelScope.launch { repository.postMockOrder() }
 
-    fun updateOrderState(orderId: Int, updateStatus: Int) = viewModelScope.launch { repository.updateOrderState(orderId, updateStatus) }
+    fun updateOrderState(orderId: Int, updateStatus: Int) =
+        viewModelScope.launch { repository.updateOrderState(orderId, updateStatus) }
 
-    fun searchInIngredients(searchText: String) = viewModelScope.launch { repository.searchForIngredients(searchText) }
+    fun searchInIngredients(searchText: String) =
+        viewModelScope.launch { repository.searchForIngredients(searchText) }
 
     fun clearOrders() = viewModelScope.launch { repository.clearOrders() }
 

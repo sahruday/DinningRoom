@@ -23,5 +23,5 @@ fun colorAndTextOfItemIngredient(view:TextView, count: Int) {
 
 @BindingAdapter("quanity")
 fun quantityDisplay(view: TextView, count: Int) {
-    view.text = view.resources.getText(R.string.itemCount, count.toString())
+    view.text = "x$count"//view.resources.getText(R.string.itemMultiplier, count.toString())
 }
