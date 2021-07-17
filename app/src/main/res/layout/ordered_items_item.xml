@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/quantity"
-            quanity="@{item.quantity}"
+            android:text="@{@string/itemMultiplier(item.quantity)}"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:fontFamily="@font/roboto_slab_bold"

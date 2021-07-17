@@ -4,7 +4,6 @@
     <string name="place_order">Place an order</string>
     <string name="clear_orders">Clear all orders</string>
     <string name="atTime">at %1$s</string>
-    <string name="itemCount">%1$s item(s)</string>
     <string name="itemMultiplier">x%1$s</string>
     <string name="searchHint">Search for an item</string>
     <string name="category">Category %1$s</string>
@@ -17,6 +16,11 @@
 
     <string name="minuteHolder">%1$s min</string>
     <string name="secondHolder">%1$s s</string>
+
+    <plurals name="itemCount">
+        <item quantity="one">%1$s item</item>
+        <item quantity="other">%1$s items</item>
+    </plurals>
 
 
 </resources>
